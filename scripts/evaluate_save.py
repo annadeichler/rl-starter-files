@@ -43,7 +43,7 @@ print(f"Device: {device}\n")
 
 # Load environment
 
-env = ut.make_env(args.env, args.seed)
+env = utils.make_env(args.env, args.seed)
 
 # Load agent
 

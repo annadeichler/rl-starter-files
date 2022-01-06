@@ -99,3 +99,7 @@ for ep in range(episodes):
 print(traj.shape)
 print(sum(ep_rew)/len(ep_rew))
 print(sum(ep_len)/len(ep_len))
+
+path = "storage/{}/".format(args.env)
+with open(path + "/expert_{}.npy".format(args.env), "wb") as f:
+    np.save(f, traj[:traj.shape[0]])

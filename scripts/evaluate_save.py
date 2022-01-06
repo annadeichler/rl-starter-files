@@ -31,6 +31,10 @@ parser.add_argument("--text", action="store_true", default=False,
                     help="add a GRU to the model")
 parser.add_argument("--tile-size", type=int, default=8,
                     help="tile size")
+parser.add_argument("--reward-threshold", type=float, default=0.90,
+                    help="reward threshold")
+parser.add_argument("--len-threshold", type=int, default=0,
+                    help="length threshold")
 
 args = parser.parse_args()
 
@@ -83,8 +87,7 @@ for ep in range(episodes):
         steps += 1
 
         if done:
-
-            if rew >= 0.92 and steps < 16:
+            if rew >= args.reward_threshold and steps < args.len_threshold:
                 print(f"episode {ep}, reward {rew}, steps {steps}")
                 ep_rew.append(rew)
                 ep_len.append(steps)

@@ -1,6 +1,7 @@
 import argparse
 import time
 import torch
+import numpy as np
 from torch_ac.utils.penv import ParallelEnv
 
 import utils

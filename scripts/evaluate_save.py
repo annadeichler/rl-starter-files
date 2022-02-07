@@ -62,6 +62,7 @@ print("Agent loaded\n")
 
 obs = env.reset()
 obs_img = env.render('rgb_array', highlight=False, tile_size=args.tile_size)
+obs_img = obs_img.transpose(1, 0, 2)  ## render uses H,W, while obs space is W,H
 print(f"obs.shape: {obs_img.shape}")
 traj = None
 episodes = args.episodes
@@ -98,6 +99,7 @@ for ep in range(episodes):
 
             obs = env.reset()
             obs_img = env.render('rgb_array', highlight=False, tile_size=args.tile_size)
+            obs_img = obs_img.transpose(1, 0, 2)  ## render uses H,W, while obs space is W,H
             break
 
 print(traj.shape)
